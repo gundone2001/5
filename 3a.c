@@ -16,9 +16,9 @@ Item skipSpace(Item **);// skip spaces
 int strspnitem(Item *, char *);// counts the number of consecutive characters
 Item copyWord(Item **, Item **, int );// copy N chars 
 Item reorg(Item *, Item **,Item **);// create two lines 
-Item plusprobel(Item **p)//add ' ' to end of line  
+Item plusprobel(Item **p);//add ' ' to end of line  
 
-Item *deleteList(Item *ptr)// delete a line
+Item *deleteList(Item *ptr) // delete a line
 {
     Item *tmp = NULL;
     while (ptr != NULL)
