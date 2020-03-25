@@ -9,11 +9,16 @@ typedef struct Item
     struct Item *next;
 }Item;
 
-int getList(Item **);
-void putList(Item *);
-Item *deleteList(Item *);
+int getList(Item **);//reads a line
+void putList(Item *);// put a line
+Item *deleteList(Item *);// delete a line
+Item skipSpace(Item **);// skip spaces
+int strspnitem(Item *, char *);// counts the number of consecutive characters
+Item copyWord(Item **, Item **, int );// copy N chars 
+Item reorg(Item *, Item **,Item **);// create two lines 
+Item plusprobel(Item **p)//add ' ' to end of line  
 
-Item *deleteList(Item *ptr)
+Item *deleteList(Item *ptr)// delete a line
 {
     Item *tmp = NULL;
     while (ptr != NULL)
@@ -25,7 +30,7 @@ Item *deleteList(Item *ptr)
     return ptr;
 }
 
-int getList(Item **pptr)
+int getList(Item **pptr)//reads a line
 {
     char buf[81], *str;
     Item head = {'*', NULL};
@@ -58,7 +63,7 @@ int getList(Item **pptr)
     return rc;
 }
 
-Item skipSpace(Item **p)
+Item skipSpace(Item **p)// skip spaces
 {
     if(*p!=NULL)
     {
@@ -75,14 +80,14 @@ Item skipSpace(Item **p)
     }
     }
 }
-Item plusprobel(Item **p)
+Item plusprobel(Item **p)//add ' ' to end of line 
 {
 
     (*p)->next = (Item *)malloc(sizeof(Item));
     (*p) = (*p)->next;
     (*p)->c = ' ';
 }
-int strspnitem(Item *p, char *a)
+int strspnitem(Item *p, char *a)// counts the number of consecutive characters
 {
     int i = 0;
     // puts(a);
@@ -99,7 +104,7 @@ int strspnitem(Item *p, char *a)
     return i;
 }
 
-Item copyWord(Item **from, Item **to, int k)
+Item copyWord(Item **from, Item **to, int k)// copy N chars 
 {
     char a[1];
     while (k > 0)
@@ -112,7 +117,7 @@ Item copyWord(Item **from, Item **to, int k)
     }
 }
 
-void putList(Item *ptr)
+void putList(Item *ptr)// put a line
 {
     printf("\"");
     for (; ptr != NULL; ptr = ptr->next)
@@ -121,7 +126,7 @@ void putList(Item *ptr)
     printf("\n");
 }
 
-Item reorg(Item *s, Item **one,Item **two)
+Item reorg(Item *s, Item **one,Item **two)// create two lines 
 {
     int flag = 0, flag1 = 0, nacalo = 1;
     Item headone = {'*', NULL};
